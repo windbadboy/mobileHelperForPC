@@ -10,12 +10,12 @@ class ManageAction extends Action {
 	}
 	public function add() {
 		if (isset($_POST['send']))  { 
-			if ($this->_model->add(Request::getInstance($this->_model,$this->_check))) {
+			if ($this->_model->add()) {
 				//新增成功，跳转成功提示页
-				Redirect::getInstance($this->_tpl)->succ('?p=manage','管理员新增成功');
+				$this->_redirect->succ('?p=manage','管理员新增成功');
 			} else {
 				//新增失败，跳转到失败页
-				Redirect::getInstance($this->_tpl)->error('管理员新增失败');
+				$this->_redirect->error('管理员新增失败');
 			}
 		}
 	    $this->_tpl->display(SMARTY_BACK.'manage/add.tpl');
@@ -25,8 +25,7 @@ class ManageAction extends Action {
 	}
 	
 	public function isUser() {
-		$this->_check->ajax($this->_model);
+		$this->_model->isUser();
 	}
 }
-
 ?>
