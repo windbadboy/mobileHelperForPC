@@ -43,15 +43,22 @@ class DB {
 		$_addValues = implode("','",Tools::setFormString($_addValues));
 		$_sql = "INSERT INTO $_tables[0] ($_addFields) VALUES ('$_addValues')";
 
-		print($_sql);
+//		print($_sql);
 // 	    $_stmt = $this->_pdo->prepare($_sql);
 // 	    $_stmt->execute();
 // 	    return $_stmt->rowCount();
+		return $this->execute($_sql);
 	}
 	
 	//验证一条数据
-	protected function isOne() {
-		$_sql = "SELECT id FROM MH_manager where user='admin' LIMIT 1";
+	protected function isOne($_where,$_tables) {
+		$_isAnd = '';
+		foreach ($_where as $_key=>$_value) {
+			$_isAnd .= "$_key='$_value' AND ";
+		}
+		$_isAnd = substr($_isAnd,0,-4);
+		$_sql = "SELECT id FROM $_tables[0] where $_isAnd LIMIT 1";
+		//echo $_sql;
 		return $this->execute($_sql);
 	}
 	

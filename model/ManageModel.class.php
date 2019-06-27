@@ -14,8 +14,8 @@ class ManageModel extends Model {
         return parent::add($_addData,$this->_tables);
     }
     
-    public function isOne() {
-    	return parent::isOne();
+    public function isOne($_where) {
+    	return parent::isOne($_where,$this->_tables);
     }
 }
 ?>

@@ -12,7 +12,7 @@ class ManageCheck extends Check {
 			$this->_flag = false;
 		}
 		if (self::checkStrLength($this->_data['user'],20,'max')) {
-			$this->_message[] = '管理员用户名不得大于2位.';
+			$this->_message[] = '管理员用户名不得大于20位.';
 			$this->_flag = false;
 		}
 		if (self::checkStrLength($this->_data['pass'],6,'min')) {
@@ -24,12 +24,18 @@ class ManageCheck extends Check {
 			$this->_flag = false;
 		}
 		
-		if ($_model->isOne()) {
+		if ($_model->isOne(array('user'=>$this->_data['user']))) {
 			$this->_message[] = '用户名被占用.';
 			$this->_flag = false;
 		}
 		
+		
+		
 		return $this->_flag;
+	}
+	
+	public function ajax($_model) {
+		echo $_model->isOne(array('user'=>$_POST['user'])) ? 1 : 2;
 	}
 }
 

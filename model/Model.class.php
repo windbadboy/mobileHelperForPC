@@ -11,8 +11,8 @@ class Model extends DB {
 		return $this->_db->add($_addData,$_tables);
 	}
 	
-	protected function isOne() {
-		return $this->_db->isOne();
+	protected function isOne($_where,$_tables) {
+		return $this->_db->isOne($_where,$_tables);
 	}
 	
 }

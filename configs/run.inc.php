@@ -3,6 +3,9 @@
 error_reporting(E_ALL & ~E_STRICT & ~E_WARNING);
 //定义一个实际路径
 define('ROOT_PATH', substr(dirname(__FILE__),0,-8));
+
+//设置编码
+header('Content-Type:text/html;charset=utf-8');
 //定义时区
 date_default_timezone_set('Asia/Shanghai');
 //加载自定义配置文件
