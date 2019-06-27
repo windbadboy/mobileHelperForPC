@@ -19,9 +19,9 @@ define('SMARTY_RIGHT_DELIMITER', '}');
 //缓存关闭
 define('SMARTY_CACHING', 0);
 //设置数据库连接参数
-define('DB_DNS','mysql:host=localhost;dbname=mobileHelper');
+define('DB_DNS','mysql:host=localhost;dbname=xxx');
 define('DB_USER','root');
-define('DB_PASS','hellokitty123');
+define('DB_PASS','xxx');
 define('DB_CHARSET','UTF8');
 define('DB_PREFIX','MH_');
 ?>
